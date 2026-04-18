@@ -1,12 +1,12 @@
 import java.time.LocalDate;
 
-public abstract sealed class Veiculo {
+abstract sealed class Veiculo implements Fretavel, Tributavel permits Caminhao, CarroPasseio {
 
-  private String placa;
-  private String marca;
-  private double valorLocacaoDiaria;
-  private int anoFabricacao;
-  private double precoFipe;
+  final private String placa;
+  final private String marca;
+  final private double valorLocacaoDiaria;
+  final private int anoFabricacao;
+  final private double precoFipe;
 
     public Veiculo(int anoFabricacao, String marca, String placa, double precoFipe, double valorLocacaoDiaria) {
 
@@ -52,4 +52,11 @@ public abstract sealed class Veiculo {
     public double getValorLocacaoDiaria() {
         return valorLocacaoDiaria;
     }
+
+    @Override
+    public String toString(){
+
+     return "\nMarca: " + getMarca() + " | Ano fabricação: " + getAnoFabricacao() + " | Placa: " + getPlaca() + " | Valor fipe: " + getPrecoFipe() + " | Valor diária: " + getValorLocacaoDiaria();
+    }
+
 }
